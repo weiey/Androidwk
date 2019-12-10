@@ -46,7 +46,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
         overrideTransition();
         super.onCreate(savedInstanceState);
         mContext = this;
-        AppManager.getInstance().addActivity(this);
         if (getLayoutId() != 0) {
             setContentView(getLayoutId());
         }
@@ -61,7 +60,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     public void finish() {
         KeyboardUtils.hideSoftInput(this);
         super.finish();
-        AppManager.getInstance().removeActivity(this);
         overrideTransition();
     }
 
