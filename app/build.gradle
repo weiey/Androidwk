@@ -4,7 +4,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.weiey.app"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -42,7 +42,9 @@ android {
         }
     }
     buildTypes {
+
         release {
+            manifestPlaceholders = [app_name: "@string/app_name", app_icon: "@mipmap/ic_launcher_round", app_theme: "@style/AppTheme"]
             buildConfigField "int", "APP_EVN", "1"
             minifyEnabled true
             shrinkResources false
@@ -50,13 +52,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            buildConfigField "int", "APP_EVN", "1"
+            applicationIdSuffix "test"
+            manifestPlaceholders = [app_name: "@string/app_name_test", app_icon: "@mipmap/ic_logo_round", app_theme: "@style/AppThemeDebug"]
+            buildConfigField "int", "APP_EVN", "0"
             minifyEnabled false
             shrinkResources false
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-
     }
 
     //控制打包的名字

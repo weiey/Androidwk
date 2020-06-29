@@ -89,7 +89,7 @@ public class HomeActivity extends BaseActivity {
         mNavListAdapter = new CommonAdapter<String>(this,R.layout.list_item_navigation) {
             @Override
             public void convert(ViewHolder holder, String title) {
-                ImageView itemIcon= holder.getView(R.id.list_item_navigation_icon);
+                ImageView itemIcon = holder.getView(R.id.list_item_navigation_icon);
                 TextView itemName = holder.getView(R.id.list_item_navigation_name);
                 itemName.setText(title);
             }

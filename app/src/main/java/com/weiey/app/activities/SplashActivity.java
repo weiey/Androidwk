@@ -13,8 +13,6 @@ import com.weiey.app.activities.base.BaseActivity;
  *
  * @Description: 启动页
  *
- * @author zw
- * @date 2019/11/6
  */
 public class SplashActivity extends BaseActivity {
 

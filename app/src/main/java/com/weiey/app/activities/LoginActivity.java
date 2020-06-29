@@ -4,20 +4,12 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.InputType;
-import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.*;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.weiey.app.R;
 import com.weiey.app.activities.base.BaseActivity;
-import org.json.JSONObject;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class LoginActivity extends BaseActivity {
 
@@ -43,8 +35,8 @@ public class LoginActivity extends BaseActivity {
     }
 
     /**
-     * 设置当前页面不可侧滑
      *
+     * 设置当前页面不可侧滑
      * @return
      */
     @Override
