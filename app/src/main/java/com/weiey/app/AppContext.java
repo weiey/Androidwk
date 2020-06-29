@@ -22,6 +22,7 @@ public class AppContext extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = this;
+        AppManager.init(this);
         initLeakCanary();
         initBugly();
     }
