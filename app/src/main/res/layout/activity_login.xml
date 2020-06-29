@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools" android:background="@drawable/login_bg"
+             android:id="@+id/container"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:paddingLeft="@dimen/activity_horizontal_margin"
+             android:paddingRight="@dimen/activity_horizontal_margin"
+             android:paddingTop="@dimen/activity_vertical_margin"
+             android:gravity="center">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginRight="@dimen/dp_30"
+            android:layout_marginBottom="@dimen/dp_68"
+            android:layout_gravity="center"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/tv_logo"
+                android:text="用户登录"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@color/background_dark"
+                android:layout_margin="@dimen/dp_10"/>
+
+
+        <com.ghpda.app.view.ClearableEditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_50"
+                android:hint="NC账号"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:scrollHorizontally="false"/>
+
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:hint="您的密码"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"/>
+            <ImageButton
+                    android:id="@+id/cb_visibiliy_pwd"
+                    android:src="@drawable/visibiliy_pwd"
+                    android:padding="@dimen/dp_3"
+                    android:background="@null"
+
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true" android:layout_centerVertical="true"
+            />
+        </RelativeLayout>
+
+
+        <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginTop="@dimen/dp_20"
+                android:textColor="@color/white"
+                android:background="@drawable/login_btn_bg"
+                android:text="立即登录"/>
+
+    </LinearLayout>
+    <TextView
+            android:id="@+id/tv_ver"
+            android:text="v1.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/dp_15"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/dp_10"/>
+</FrameLayout>

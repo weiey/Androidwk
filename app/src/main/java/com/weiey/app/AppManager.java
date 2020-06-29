@@ -1,30 +1,34 @@
 package com.weiey.app;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
+import com.weiey.app.activities.LoginActivity;
+import com.weiey.app.dialog.AlertUtil;
 import com.weiey.app.utils.LogUtil;
+import com.weiey.app.utils.ToastUtil;
 
 import java.util.Stack;
 
 
-public class AppManager {
+
+public class AppManager implements Application.ActivityLifecycleCallbacks{
 
 	private static Stack<Activity> activityStack;
 	private static AppManager instance;
-
-	private AppManager() {
+	private AppManager(Application app) {
+		app.registerActivityLifecycleCallbacks(this);
+	}
+	public static void init(Application app){
+		instance = new AppManager(app);
 	}
 
 
 	public static AppManager getInstance() {
-		if (null == instance) {
-			synchronized (AppManager.class) {
-				if (null == instance) {
-					instance = new AppManager();
-				}
-			}
-		}
 		return instance;
 	}
 
@@ -105,5 +109,71 @@ public class AppManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void logout() {
+		try {
+			Context mContext = currentActivity();
+			if(mContext != null){
+				AlertUtil.showAlert(mContext, "提示", "登录信息过期,请重新登录", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						finishAllActivity();
+						Intent intent = new Intent(mContext, LoginActivity.class);
+						intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						mContext.startActivity(intent);
+						System.exit(0);
+					}
+				});
+			}else{
+				ToastUtil.show("登录信息过期,请重新登录");
+			}
+
+
+
+//			Intent intent = new Intent(mContext, LoginActivity.class);
+//			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//			mContext.startActivity(intent);
+//			System.exit(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+
+	@Override
+	public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+		addActivity(activity);
+	}
+
+	@Override
+	public void onActivityStarted(Activity activity) {
+
+	}
+
+	@Override
+	public void onActivityResumed(Activity activity) {
+
+	}
+
+	@Override
+	public void onActivityPaused(Activity activity) {
+
+	}
+
+	@Override
+	public void onActivityStopped(Activity activity) {
+
+	}
+
+	@Override
+	public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+
+	}
+
+	@Override
+	public void onActivityDestroyed(Activity activity) {
+		removeActivity(activity);
 	}
 }

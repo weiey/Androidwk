@@ -1,6 +1,7 @@
 package com.weiey.app;
 import android.app.Application;
 import android.content.Context;
+import androidx.multidex.MultiDex;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 
@@ -15,7 +16,7 @@ public class AppContext extends Application {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         // 使用 Dex分包
-//        MultiDex.install(this);
+        MultiDex.install(this);
     }
     @Override
     public void onCreate() {
